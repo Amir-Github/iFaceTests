@@ -1,0 +1,79 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/f9e96ef961789483f3e452efae183b25_0.4.9.apk
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17359, uid=17359 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able see all their widgets on screen"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17415, uid=17415 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able check the iFace details"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17590, uid=17590 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able to add a new driver"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17658, uid=17658 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able to Logon"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17725, uid=17725 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able to Logoff"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=17806, uid=17806 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able to delete a driver"
+java.lang.SecurityException: Permission Denial: starting instrumentation ComponentInfo{transtech.AF.Android.Shell.test/sh.calaba.instrumentationbackend.CalabashInstrumentationTestRunner} from pid=18270, uid=18270 not allowed because package transtech.AF.Android.Shell.test does not have a signature matching the target transtech.AF.Android.Shell
+	at android.os.Parcel.readException(Parcel.java:1425)
+	at android.os.Parcel.readException(Parcel.java:1379)
+	at android.app.ActivityManagerProxy.startInstrumentation(ActivityManagerNative.java:2871)
+	at com.android.commands.am.Am.runInstrument(Am.java:675)
+	at com.android.commands.am.Am.run(Am.java:119)
+	at com.android.commands.am.Am.main(Am.java:82)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:235)
+	at dalvik.system.NativeStart.main(Native Method)
+"Starting scenario: User should be able to so something"

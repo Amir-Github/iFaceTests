@@ -1,0 +1,8 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/c2419c7b21916283c02463fea98c9c10_0.4.9.apk
+"Copying the checklist across..."
+"Starting scenario: User should be able to submit an allgood checklist"
+"Cool! all passed!"
+"Copying the checklist across..."
+"Starting scenario: User should be able to submit a failed checklist"
+"Cool! all passed!"

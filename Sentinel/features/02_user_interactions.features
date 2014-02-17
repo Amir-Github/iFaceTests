@@ -1,0 +1,14 @@
+Feature: User Interactions
+  @startWork 
+  Scenario: User should be able to start work
+    Then I start work
+    
+    
+  @startRest 
+  Scenario: User should be able to start rest
+    Then I start rest  
+ 		
+  
+  @manualUpdate 
+  Scenario: User should be able to apply a force update
+    Then I do a force update 

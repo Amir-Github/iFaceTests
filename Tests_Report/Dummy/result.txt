@@ -1,0 +1,15 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/6cd475fb208ba4c967ca1673570f8f1a_0.4.9.apk
+"Starting scenario: User should be able see all their widgets on screen"
+"Cool! all passed!"
+"Starting scenario: User should be able check the iFace details"
+"Starting scenario: User should be able to add a new driver"
+"Cool! all passed!"
+"Starting scenario: User should be able to Logon"
+"Cool! all passed!"
+"Starting scenario: User should be able to Logoff"
+"Cool! all passed!"
+"Starting scenario: User should be able to delete a driver"
+"Cool! all passed!"
+"Starting scenario: User should be able to so something"
+"Cool! all passed!"

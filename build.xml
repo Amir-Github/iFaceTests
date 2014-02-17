@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iFace Test Suite">
+   
+    <!-- import the global params -->
+  <import file="params.xml" />
+  
+  <target name="run-tests" description="Runs the test and generates the report for all apps" depends="clean">
+     <ant dir="Shell" target="run-tests"/>
+     <ant dir="Sentinel" target="run-tests"/>
+     <ant dir="IAPDeclaration" target="run-tests"/>
+     <ant dir="QuickJobs" target="run-tests"/>
+     <ant dir="MassManagement" target="run-tests"/>
+     <ant dir="PreTripChecklist" target="run-tests"/>
+     
+     <zip destfile="${final.test.report.dir}/iFace_tests_report.zip" basedir="${final.test.report.dir}"/>			    
+  </target>
+
+  
+  <target name="clean" description="cleans each of the subprojects">
+    <ant dir="Shell" target="clean"/>
+    <ant dir="Sentinel" target="clean"/>
+    <ant dir="IAPDeclaration" target="clean"/>
+    <ant dir="QuickJobs" target="clean"/>
+    <ant dir="MassManagement" target="clean"/>
+    <ant dir="PreTripChecklist" target="clean"/>
+    
+    <delete>
+       <fileset dir="${final.test.report.dir}" includes="**/*"/>
+   </delete>
+  </target>
+
+
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Messaging test suite">
+   
+  <!-- These are the parameters that are machine dependent. -->
+  <property name="iface.codebase.dir" location="/home/amir/transtech/Android"/>
+  <property name="android.sdk" location="~/android-sdk-linux"/>
+  
+  <property name="test.report.dir" location="./test-report"/>
+  
+  <!-- App Name -->
+  <property name="app.name" value="Messaging"/>
+  
+  <!-- import the common tasks -->
+  <import file="../common.xml" />
+
+</project>

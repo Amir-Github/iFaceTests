@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Common Tasks">
+   
+  <!-- import the global params -->
+  <import file="params.xml" />
+ 
+  
+  <target name="prepare" description="Builds the application in debug mode and copies across the .apk for testing" depends="clean">
+  	<ant dir="${iface.codebase.dir}/${app.name}" target="debug"/> 
+  	<copy file="${iface.codebase.dir}/${app.name}/bin/${app.name}-debug.apk" tofile="bin/${app.name}.apk" overwrite="true"/>
+  	
+  	<echo message="resigning the .apk with calabash-android..."/>
+  	<exec executable="calabash-android" logError="true">
+    	  <arg value="resign"/>
+	   <arg value="bin/${app.name}.apk"/>
+	</exec>    	    
+  </target>
+  
+  <target name="run-tests" description="Runs the test without generating the report" depends="prepare">
+  	<echo message="running the tests..."/>
+  	<exec executable="calabash-android" logError="true">
+  	  <env key="SCREENSHOT_PATH" value="${test.report.dir}/"/> 
+    	  <arg value="run"/>
+	  <arg value="bin/${app.name}.apk"/>
+	  <arg value="--format html" />
+	  <arg value="--out ${test.report.dir}/report.html" /> 
+	   <redirector output="${test.report.dir}/result.txt" alwayslog="true"/> 
+	</exec>
+	
+	<replace file="${test.report.dir}/report.html" token="/* Regenerate with rake sass */" value="img{-moz-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);-o-transform:rotate(-90deg);-ms-transform:rotate(-90deg);margin-left:220px;margin-top:-180px;height: 1000px;}"/>
+	
+	<copy todir="../${final.test.report.dir}/${app.name}">
+            <fileset dir="${test.report.dir}"/>
+        </copy>     
+  </target>
+
+  <target name="clean" description="clean up">
+        <echo message="Cleaning up..."/>
+	<delete>
+    	   <fileset dir="bin" includes="**/*"/>
+  	</delete>
+	<delete includeemptydirs="true">
+    	   <fileset dir="${test.report.dir}" includes="**/*"/>
+  	</delete>
+  	<delete includeemptydirs="true">
+    	   <fileset dir="test_servers" includes="**/*"/>
+  	</delete>
+  </target>
+
+  
+</project>

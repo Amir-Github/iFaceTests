@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="All Transtech Apps">
+  <property name="cyanogenmod" location="/media/Cyanogen/cm/"/>
+  <property name="cmsystemdir" location="${cyanogenmod}/out/target/product/galaxytab/system"/>
+  <property name="cmappdir" location="${cmsystemdir}/app"/>
+  <property name="galaxydir" location="${cyanogenmod}/device/samsung/galaxytab"/>
+
+  <!-- These are the parameters that are machine dependent. -->
+  <property name="provisioning.dir" location="Z:/Transtech/Release Management/iFaceV2"/>
+  <property name="testprovisioning.dir" location="X:/iFace_V2/02_Testing/Provisioning"/>
+  <property name="provisioninglocal.dir" location="C:/Transtech/iFaceV2/Provisioning"/>
+  <property name="devupdates.dir" location="Y:/inetpub/wwwroot/iFaceV2Update"/>
+  
+  <property name="android.sdk" location="C:/Android/android-sdk"/>
+  <property file="version.properties"/>
+
+  
+   <!-- This task is to update timestamp for Version number to be used for Provising tool -->
+  <target name="UpdateVersion" description="update the timestamp field in properties file for version generation">
+	<tstamp>
+		<format property="current.date.time" pattern="dd_MM_yyyy_HH_mm"/>
+	</tstamp>
+	<propertyfile file="version.properties">
+	  <entry  key="timeStamp" value="${current.date.time}"/>
+	 </propertyfile>
+	 <property name="version" value="${major}.${minor}.${patch}.${current.date.time}"/>
+	 <!-- Copy file to be used by provisinig tool -->
+	<copy todir="Provision/bin" file="version.properties"/>
+	
+	<!-- Copy file for AppManager and UpdateService -->
+	<property name="version.tmp.file" value="patches/data/data/transtech.AF.Android.Shell/shared_prefs/TranstechVersionPreferences.tmp"/>
+	<property name="patches.version.file" value="patches/data/data/transtech.AF.Android.Shell/shared_prefs/TranstechVersionPreferences.xml"/>
+	<property name="update.patches.version.file" value="updates/patches/data/data/transtech.AF.Android.Shell/shared_prefs/TranstechVersionPreferences.xml"/>
+	<copy file="${version.tmp.file}" toFile="${patches.version.file}" overwrite="true">
+	  <filterset>
+		<filter token="VERSION" value="${version}"/>
+	  </filterset>
+	</copy>
+	<copy file="${version.tmp.file}" toFile="${update.patches.version.file}" overwrite="true">
+	  <filterset>
+		<filter token="VERSION" value="${version}"/>
+	  </filterset>
+	</copy>
+  </target>
+  
+  <target name="FixCRLFs" description="make sure all the scripts are unix friendly">
+	<fixcrlf srcdir="patches/etc/init.d" includes="**/*.sh" eol="unix" eof="remove" />
+	<fixcrlf srcdir="patches/system/xbin" includes="**/*.sh" eol="unix" eof="remove" />
+	<fixcrlf srcdir="updates/patches/etc/init.d" includes="**/*.sh" eol="unix" eof="remove" />
+	<fixcrlf srcdir="updates/patches/system/xbin" includes="**/*.sh" eol="unix" eof="remove" />
+  </target>  
+
+  
+  <target name="build-transtech" description="Builds the Transtech applications within this directory">
+    
+	<!-- Libraries -->
+    <ant dir="Common" target="release"/>
+    <ant dir="MessagingCommon" target="release"/>
+
+    <!-- Core Applications -->
+    <ant dir="TranstechSharedResources" target="release"/>
+    <ant dir="MessagingProvider" target="release"/>
+    <ant dir="AppManager" target="release"/>
+    <ant dir="TranstechShell" target="release"/>
+    <ant dir="TranstechGpsLib" target="release"/>
+    <ant dir="Comms" target="release"/>
+
+    <!-- Build Specific Applications -->
+    <ant dir="Map" target="release"/>
+    <ant dir="TranstechGPS" target="release"/>
+    <ant dir="Messaging" target="release"/>
+    <ant dir="IAPDeclarations" target="release"/>
+    <ant dir="Sentinel" target="release"/>
+    <ant dir="SpeedAssist" target="release"/>
+    <ant dir="PreTripChecklist" target="release"/>
+    <ant dir="Demo" target="release"/>
+    <ant dir="MassManagement" target="release"/>
+    <ant dir="QuickJobs" target="release"/>
+	
+    <ant dir="Provision" target="bundle"/>
+
+  </target>
+
+  <target name="build-provision" description="Builds the Provision application">
+    <ant dir="Provision" target="bundle"/>
+  </target>
+  
+  <target name="compile-ant-tasks" description="Prepares custom ant-tasks that are used by other components in this script">
+    <javac srcdir="Scripts/src" destdir="Scripts/bin"/>
+    <jar file="Scripts/ant-tasks.jar">
+      <fileset dir="Scripts/bin"/>
+    </jar>
+  </target>
+
+  <target name="install-transtech" depends="build-transtech" description="Installs all applications to a connected device">
+    <!-- Core Applications -->
+    <ant dir="TranstechSharedResources" target="installr"/>
+    <ant dir="MessagingProvider" target="installr"/>
+    <ant dir="AppManager" target="installr"/>
+    <ant dir="TranstechShell" target="installr"/>
+    <ant dir="TranstechGpsLib" target="installr"/>
+    <ant dir="Comms" target="installr"/>
+
+    <!-- Build Specific Applications -->
+    <ant dir="Map" target="installr"/>
+    <ant dir="TranstechGPS" target="installr"/>
+    <ant dir="Messaging" target="installr"/>
+    <ant dir="IAPDeclarations" target="installr"/>
+    <ant dir="Sentinel" target="installr"/>
+    <ant dir="SpeedAssist" target="installr"/>
+    <ant dir="PreTripChecklist" target="installr"/>
+    <ant dir="Demo" target="installr"/>
+
+  </target>
+
+  <target name="clean" description="cleans each of the subprojects">
+    <ant dir="Common" target="clean"/>
+    <ant dir="MessagingCommon" target="clean"/>
+
+    <!-- Core Applications -->
+    <ant dir="TranstechSharedResources" target="clean"/>
+    <ant dir="MessagingProvider" target="clean"/>
+    <ant dir="AppManager" target="clean"/>
+    <ant dir="TranstechShell" target="clean"/>
+    <ant dir="TranstechGpsLib" target="clean"/>
+    <ant dir="Comms" target="clean"/>
+
+    <!-- Build Specific Applications -->
+    <ant dir="Map" target="clean"/>
+    <ant dir="TranstechGPS" target="clean"/>
+    <ant dir="Messaging" target="clean"/>
+    <ant dir="IAPDeclarations" target="clean"/>
+    <ant dir="Sentinel" target="clean"/>
+    <ant dir="SpeedAssist" target="clean"/>
+    <ant dir="PreTripChecklist" target="clean"/>
+    <ant dir="Demo" target="clean"/>
+
+    <delete dir="tmp"/>
+  </target>
+
+
+  <target name="build-cyanogen" description="Builds the cyanogenmod source tree.  This will take some time">
+    <exec executable="./buildcyanogen.sh"/>
+  </target>
+
+
+  <target name="buildrom" depends="" description="Constructs a stock cyanogenmod ROM image, using its scripts.  this will only work on the linux host">
+    <exec command="sudo ./buildimage" dir="${galaxydir}/tools" />
+  </target>
+
+  <target name="apps-to-output" depends="build-transtech" description="Copies all built binaries into the updates directory, ready for deployment">
+    <copy todir="updates/packages" flatten="true">
+      <regexpmapper from="^(.*)[/\\](.*)-release\.apk" to="\2.apk"/>
+      <fileset dir="." includes="*/bin/*-release.apk">
+      </fileset>
+    </copy>
+  </target>
+
+
+  <target name="create-tmc-events" description="Runs ruby script to create TMC events file in updates directory">
+    <exec executable="ruby">
+      <arg value="create_road_exclusions.rb"/>
+    </exec>
+  </target>
+
+  <target name="setup-config-files" description="Perform token substitutions on configuration files to ensure they are correct" depends="compile-ant-tasks, apps-to-output, create-tmc-events, FixCRLFs">
+    <taskdef name="setup_config" classname="au.net.transtech.ant.ProvisionFileUpdater" classpath="Scripts/bin"/>
+    <mkdir dir="tmp/updates_prod"/>
+    <copy todir="tmp/updates_prod">
+      <fileset dir="updates" includes="**/*" excludes="configuration/*.json"/>
+    </copy>
+    <copy todir="tmp/updates_prod">
+      <fileset dir="updates" includes="configuration/*.json"/>
+      <filterchain>
+        <filterreader classname="org.apache.tools.ant.filters.ReplaceTokens">
+          <param type="token" name="UPDATE_URL" value="http://ifacev2update.transtech.net.au"/>
+        </filterreader>
+      </filterchain>
+    </copy>
+
+    <mkdir dir="tmp/updates_test"/>
+    <copy todir="tmp/updates_test">
+      <fileset dir="updates" includes="**/*" excludes="configuration/*.json"/>
+    </copy>
+    <copy todir="tmp/updates_test">
+      <fileset dir="updates" includes="configuration/*.json"/>
+      <filterchain>
+        <filterreader classname="org.apache.tools.ant.filters.ReplaceTokens">
+          <param type="token" name="UPDATE_URL" value="http://webservices.transtech.net.au:8075"/>
+        </filterreader>
+      </filterchain>
+    </copy>
+
+    <setup_config>
+      <fileset dir="tmp/updates_prod" includes="configuration/*.json"/>
+      <fileset dir="tmp/updates_test" includes="configuration/*.json"/>
+    </setup_config>
+  </target>
+
+  <target name="deploy-to-provisioning" depends="UpdateVersion, setup-config-files">
+    <copy todir="${provisioning.dir}/updates">
+      <fileset dir="tmp/updates_prod" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioning.dir}/patches">
+    <fileset dir="patches" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioning.dir}" file="Provision/provision.jar"/>
+  </target>
+  
+  <target name="deploy-to-test-provisioning" depends="UpdateVersion, setup-config-files">
+    <copy todir="${testprovisioning.dir}/updates">
+      <fileset dir="tmp/updates_test" includes="**/*"/>
+    </copy>
+    <copy todir="${testprovisioning.dir}/patches">
+      <fileset dir="patches" includes="**/*"/>
+    </copy>
+    <copy todir="${testprovisioning.dir}" file="Provision/provision.jar"/>
+  </target>
+  
+  <target name="deploy-to-local-provisioning" depends="UpdateVersion, setup-config-files">
+    <copy todir="${provisioninglocal.dir}/updates">
+      <fileset dir="tmp/updates_test" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioninglocal.dir}/patches">
+      <fileset dir="patches" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioninglocal.dir}" file="Provision/provision.jar"/>
+  </target>
+  
+  <target name="deploy-to-dev-updates" description="Deploys all updates to the dev updates directory" depends="setup-config-files">
+    <copy todir="${devupdates.dir}">
+      <fileset dir="tmp/updates_test" includes="**/*"/>
+    </copy>
+  </target>
+
+  <target name="deploy-to-production" description="Deploys all updates to the production directory" depends="setup-config-files">
+    <ftp server="218.185.9.184" userid="iFaceUpdate" password="iFaceUpdate" passive="yes">
+      <fileset dir="tmp/updates_prod" excludes="**/README.txt"/>
+    </ftp> 
+  </target>
+  
+  <!-- This target checks for any modified or added config files, validates them and deploys to prod provisioning and updates		 			-->
+  <!-- An argument needs to be passed when calling this target in the format: 																	-->
+  <!-- deploy-new-config -Dbefore=x (where x is a positive number indicating the number of hours before till now to check for modifications) 	-->
+  <target name="deploy-new-config" description="Deploys new configs/screen configs to the production directory">
+  
+	<property name="before" value="${before}"/>
+	<property name="temp.dir.config" value="tmp/new_config"/>
+  
+	<!-- Remove any old files and create fresh folders -->
+	<delete dir="${temp.dir.config}"/>
+	<mkdir dir="${temp.dir.config}/configuration"/>
+	<mkdir dir="${temp.dir.config}/screenconfig"/>
+  
+	<tstamp>
+      <format property="beforeTime" pattern="MM/dd/yyyy hh:mm aa"
+              offset="-${before}" unit="hour"/>
+	</tstamp>
+	
+	<echo message="" />
+	<echo message="--------------------------------------------------------"/>
+	<echo message="Checking modifications to file before ${before} hour(s)"/>
+	<echo message="After: ${beforeTime}"/>
+	<echo message="--------------------------------------------------------"/>
+	<echo message="" />
+  
+	<!-- Get the modified files in config and screen config -->
+	<copy todir="${temp.dir.config}">
+	<fileset dir="updates" includes="configuration/*.json, screenconfig/*.json">
+    <date datetime="${beforeTime}" when="after"/>
+	</fileset>
+	</copy>
+	
+	<fail message="No modifications to config since ${beforeTime}">
+    <condition>
+	<not>
+         <available file="${temp.dir.config}" type="dir"/>
+	</not>
+    </condition>
+	</fail>
+	
+	<!-- Validate JSONs (configs)-->
+	<exec executable="ruby.exe">
+    <arg value="JSONValidator.rb"/>
+	<arg value="${temp.dir.config}/configuration/"/>
+	<redirector output="${temp.dir.config}/validation_output.txt" alwayslog="true"/>
+	</exec>
+	<fail message="Config JSON not valid!">
+    <condition>
+        <resourcecontains resource="${temp.dir.config}/validation_output.txt" substring="NOT VALID!"/>
+    </condition>
+	</fail>
+	
+	<!-- Validate JSONs (screen configs)-->
+	<exec executable="ruby.exe">
+    <arg value="JSONValidator.rb"/>
+	<arg value="${temp.dir.config}/screenconfig/"/>
+	<redirector output="${temp.dir.config}/validation_output.txt" alwayslog="true"/>
+	</exec>
+	<fail message="Screen config JSON not valid!">
+    <condition>
+        <resourcecontains resource="${temp.dir.config}/validation_output.txt" substring="NOT VALID!"/>
+    </condition>
+	</fail>
+	
+	<!-- Making a list of new configurations files-->
+	<fileset id="newConfigs" dir="${temp.dir.config}\configuration\" includes="*.json"/>
+	<pathconvert property="newConfigFiles" refid="newConfigs" pathsep="," >
+		<map from="${user.dir}\${temp.dir.config}\configuration\" to=""/>		
+	</pathconvert>
+	
+	<!-- Making a list of new screen config files-->
+	<fileset id="newScreenConfig" dir="${temp.dir.config}\screenconfig\" includes="*.json"/>
+	<pathconvert property="newScreenConfigFiles" refid="newScreenConfig" pathsep="," >
+		<map from="${user.dir}\${temp.dir.config}\screenconfig\" to=""/>		
+	</pathconvert>
+	
+	<!-- Updating version and replacing tokens-->
+	<antcall target="UpdateVersion"/>
+	<antcall target="setup-config-files"/>
+
+	<!-- Delete new config folder from temp so it does not get uploaded to prod -->
+	<delete dir="${temp.dir.config}"/>		
+
+	<echo message="" />
+	<echo message="Modified Valid Config Files: ${newConfigFiles}" />
+	<echo message="" />
+	<echo message="Modified Valid Screen Config Files: ${newScreenConfigFiles}" />
+	<echo message="" />
+	<echo message="--------------------------------------------------------"/>
+	<echo message="Deploying to Production:"/>
+	<echo message="--------------------------------------------------------"/>
+	
+	<!-- Copy to Provisioning -->
+	<copy todir="${provisioning.dir}/updates">
+      <fileset dir="tmp/updates_prod" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioning.dir}/patches">
+    <fileset dir="patches" includes="**/*"/>
+    </copy>
+    <copy todir="${provisioning.dir}" file="Provision/provision.jar"/>
+	
+	<!-- Copy to updates -->
+	<ftp server="218.185.9.184" userid="iFaceUpdate" password="iFaceUpdate" passive="yes">
+      <fileset dir="tmp/updates_prod" excludes="**/README.txt"/>
+    </ftp>
+	
+	<echo message="--------------------------------------------------------"/>	
+  </target>
+  
+</project>

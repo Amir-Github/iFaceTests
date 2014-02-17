@@ -1,0 +1,15 @@
+query("*")
+;
+debug(*)
+debug("*")
+query("*")
+exit;
+exit
+start_test_server_in_background
+query("*");
+query("*")
+exit
+reinstall_apps
+start_test_server_in_background
+query("*")
+exit

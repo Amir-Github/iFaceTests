@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iFace Test Suite parameters">
+  
+   <!-- These are the parameters that are machine dependent. -->
+  <property name="iface.codebase.dir" location="/home/amir/transtech/Android"/>
+  <property name="android.sdk" location="~/android-sdk-linux"/>
+  
+  <!-- App dependent parameter - can be overwritten by the app -->
+  <property name="test.report.dir" location="./test-report"/>
+  
+   <!-- App Name  This MUST be defined by each app importing this script -->
+  <property name="app.name" value="N/A"/>
+  
+  <!-- Global parameters -->
+  <property name="final.test.report.dir" value="Tests_Report"/>
+
+</project>

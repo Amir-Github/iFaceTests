@@ -1,0 +1,2 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/7c96eaeb0a3ce768cd8b6998f4dc9904_0.4.9.apk

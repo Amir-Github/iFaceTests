@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+  <string name="VERSION">4</string>
+  <string name="CHECKLIST_IDS">DEMO-CHECKLIST1,DEMO-CHECKLIST2</string>
+  <string name="DEMO-CHECKLIST1">{
+  "ChecklistId" : "DEMO-CHECKLIST1",
+  "ChecklistVersion" : "1.00",
+  "ChecklistName" : "Vehicle Checklist",
+	"Questions" : [
+    {
+			"Text" : "Park Brake Alarm Checked in Daylight Hours",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Wheel security",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+                {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Windows/Mirrors",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Brake Test Completed",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Oil Level",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Oil Leaks",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Tyres and Rims",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Lights and Reflectors",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Wipers and Washers",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Fluid Leaks",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Registration Sticker",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Visual Suspension Check",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "OK",
+					"Pass" : true
+				},
+        {
+					"Value" : "Not OK",
+					"Pass" : false
+				}
+			]
+	},
+	{
+		"Text" : "What is the weather like?",
+		"Type" : "MultiSelection",
+	    "PossibleAnswers" : [
+				
+				{
+					"Value" : "Windy",
+					"Pass" : false
+				},
+				{
+					"Value" : "Fine",
+					"Pass" : true
+				},
+				{
+					"Value" : "Rainy",
+					"Pass" : false
+				},
+				{
+					"Value" : "Snowy",
+					"Pass" : false
+				}
+			]
+	},
+	{
+		"Text" : "Where are you located at the moment?",
+		"Type" : "Text",
+	    "PossibleAnswers" : null
+	},
+	{
+		"Text" : "What is the current odometer?",
+		"Type" : "Numerical",
+	    "PossibleAnswers" : null
+	}
+
+	],
+  "FailedQuestions" : [
+		{
+      "Text" : "Please enter any maintenance service request numbers, separated by commas:",
+			"Type" : "Text",
+			"PossibleAnswers" : null
+		}
+	]
+}</string>
+  <string name="DEMO-CHECKLIST2">{
+  "ChecklistId" : "DEMO-CHECKLIST2",
+  "ChecklistVersion" : "1.00",
+  "ChecklistName" : "Driver Checklist",
+	"Questions" : [
+    {
+			"Text" : "Are you qualified to drive this vehicle?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : true
+				},
+        {
+					"Value" : "No",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Do you have a valid and current driver's licence?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : true
+				},
+        {
+					"Value" : "No",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Are you sufficiently rested?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : true
+				},
+        {
+					"Value" : "No",
+					"Pass" : false
+				}
+			]
+		},
+    {
+			"Text" : "Are you under the influence of drugs?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : false
+				},
+        {
+					"Value" : "No",
+					"Pass" : true
+				}
+			]
+		},
+    {
+			"Text" : "Are you under the influence of alcohol?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : false
+				},
+        {
+					"Value" : "No",
+					"Pass" : true
+				}
+			]
+		},
+    {
+			"Text" : "Is there a reason why you may be unfit for work?",
+			"Type" : "Selection",
+			"PossibleAnswers" : [
+				{
+					"Value" : "Yes",
+					"Pass" : false
+				},
+        {
+					"Value" : "No",
+					"Pass" : true
+				}
+			]
+		}
+	],
+  "FailedQuestions" : [
+		{
+      "Text" : "Please list any reasons you are unfit for work",
+			"Type" : "Text",
+			"PossibleAnswers" : null
+		}
+	]
+}</string>
+</map>

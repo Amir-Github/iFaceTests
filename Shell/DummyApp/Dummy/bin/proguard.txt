@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:16
+-keep class transtech.AF.Android.Dummy.DummyActivity { <init>(...); }
+

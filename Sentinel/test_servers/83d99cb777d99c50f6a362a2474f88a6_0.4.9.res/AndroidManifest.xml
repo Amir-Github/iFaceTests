@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:versionCode="23" android:versionName="2.3" package="transtech.AF.Android.Sentinel"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.BIND_INPUT_METHOD" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <application android:theme="@style/TitleTheme" android:label="@string/app_name" android:icon="@drawable/icon" android:debuggable="true">
+        <activity android:theme="@style/TitleThemeNoTitleBar" android:name="transtech.AF.Android.Sentinel.LogonInterface" android:stateNotNeeded="true" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation" />
+        <activity android:theme="@style/TitleThemeNoTitleBar" android:name="transtech.AF.Android.Sentinel.LogEvent" android:stateNotNeeded="true" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/TitleTheme" android:name=".SettingsScreen" android:exported="true" android:stateNotNeeded="true" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="transtech.AF.Android.Common.GenericDialogActivity" android:excludeFromRecents="true" />
+        <activity android:name=".SettingsActivity" android:exported="true" android:excludeFromRecents="true" android:screenOrientation="landscape" />
+        <service android:name=".SentinelService">
+            <intent-filter>
+                <action android:name="transtech.AF.Android.Sentinel.action.LOGON" />
+                <action android:name="transtech.AF.Android.Sentinel.action.LOGOFF" />
+                <action android:name="transtech.AF.Android.Sentinel.action.START_REST" />
+                <action android:name="transtech.AF.Android.Sentinel.action.START_WORK" />
+                <action android:name="transtech.AF.Android.Sentinel.action.START_DRIVE" />
+                <action android:name="transtech.AF.Android.Sentinel.action.STOP_WORK" />
+                <action android:name="transtech.AF.Android.Sentinel.action.SET_PREFS" />
+                <action android:name="transtech.AF.Android.Sentinel.action.RETRY_SEND" />
+                <action android:name="transtech.AF.Android.Sentinel.action.CHECKPOINT" />
+                <action android:name="transtech.AF.Android.Sentinel.action.TEST_IF_VIOLATING" />
+                <action android:name="transtech.AF.Android.Sentinel.action.CLEAR_QUEUE" />
+                <action android:name="transtech.AF.Android.Sentinel.action.START_LOGON" />
+                <action android:name="transtech.AF.Android.Sentinel.action.GET_SENTINEL_DATA" />
+                <action android:name="transtech.AF.Android.Sentinel.action.GET_DRIVER_INFO" />
+                <action android:name="transtech.AF.Android.Sentinel.action.GET_PERIODIC_SENTINEL_DATA" />
+                <action android:name="transtech.AF.Android.Sentinel.action.LOCAL_VIOLATION_CHECK" />
+                <action android:name="transtech.AF.Android.Sentinel.action.SHOW_WARNING" />
+                <action android:name="transtech.AF.Android.Sentinel.action.MOVEMENT_UPDATE" />
+            </intent-filter>
+        </service>
+        <service android:name=".SentinelInterfaceService">
+            <intent-filter>
+                <action android:name="transtech.AF.Android.Sentinel.action.broadcastDetails" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".BootupReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="transtech.AF.Android.gps.action.MOVEMENT_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".DriverEventsListener">
+            <intent-filter>
+                <action android:name="transtech.AF.Android.driver.broadcast.loggedOn" />
+                <action android:name="transtech.AF.Android.driver.broadcast.loggedOff" />
+                <action android:name="transtech.AF.Android.driver.broadcast.deleted" />
+                <action android:name="transtech.AF.Android.driver.broadcast.created" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".SentinelWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="transtech.AF.Android.Sentinel.broadcast.STATE_CHANGED" />
+                <action android:name="transtech.AF.Android.Sentinel.broadcast.TICK" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/sentinel_appwidget_info" />
+        </receiver>
+        <provider android:name=".DriverProvider" android:authorities="transtech.af.android.sentinel.driverprovider" />
+        <provider android:name=".SentinelDataProvider" android:authorities="transtech.af.android.sentinel.sentineldataprovider" />
+    </application>
+</manifest>

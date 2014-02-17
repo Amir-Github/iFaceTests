@@ -1,0 +1,12 @@
+version: 1.5.3.2c5f176a94
+apkFileName: 7c96eaeb0a3ce768cd8b6998f4dc9904_0.4.9.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '4'
+packageInfo:
+  orig_package: transtech.AF.Android.IAP.test
+  cur_package: android
+compressionType: false

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Shell test suite">
+   
+  <property name="iface.codebase.dir" location="./DummyApp"/>
+
+  <!-- App Name -->	
+  <property name="app.name" value="Dummy"/>
+  
+  <!-- import the common tasks -->
+  <import file="../common.xml" />
+
+</project>

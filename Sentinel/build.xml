@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Sentinel test suite">
+   
+  <!-- App Name -->
+  <property name="app.name" value="Sentinel"/>
+  
+  <!-- import the common tasks -->
+  <import file="../common.xml" />
+
+</project>

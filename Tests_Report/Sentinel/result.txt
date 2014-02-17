@@ -1,0 +1,4 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/83d99cb777d99c50f6a362a2474f88a6_0.4.9.apk
+"Starting scenario: User should be able to review their events and work summary"
+"Cool! all passed!"
