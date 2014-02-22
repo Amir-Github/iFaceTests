@@ -1,0 +1,6 @@
+No test server found for this combination of app and calabash version. Recreating test server.
+Done signing the test server. Moved it to test_servers/7d2c9c06a24ac301490c54a87c4a4986_0.4.9.apk
+"Starting scenario: User should be able to send a message off to NextGen"
+"Cool! all passed!"
+"Starting scenario: User should be able to view a message that has been composed before"
+"Cool! all passed!"

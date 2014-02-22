@@ -5,8 +5,8 @@
   <import file="params.xml" />
   
   <target name="run-tests" description="Runs the test and generates the report for all apps" depends="clean">
-     <ant dir="Shell" target="run-tests"/>
-     <ant dir="Sentinel" target="run-tests"/>
+     <!--ant dir="Sentinel" target="run-tests"/ -->
+     <ant dir="Messaging" target="run-tests"/>
      <ant dir="IAPDeclaration" target="run-tests"/>
      <ant dir="QuickJobs" target="run-tests"/>
      <ant dir="MassManagement" target="run-tests"/>
@@ -17,8 +17,8 @@
 
   
   <target name="clean" description="cleans each of the subprojects">
-    <ant dir="Shell" target="clean"/>
     <ant dir="Sentinel" target="clean"/>
+    <ant dir="Messaging" target="clean"/>
     <ant dir="IAPDeclaration" target="clean"/>
     <ant dir="QuickJobs" target="clean"/>
     <ant dir="MassManagement" target="clean"/>
